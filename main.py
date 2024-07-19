@@ -153,7 +153,7 @@ def handle_today_timesheet(connection):
         headers = [desc[0] for desc in cursor.description]
 
         # Format data into a table
-        table = tabulate(rows, headers=headers, tablefmt="github")
+        table = tabulate(rows, headers=headers, tablefmt="rounded_outline")
 
         # Display time entries for today
         display_time_entries_for_specific_date(connection, current_date)
@@ -192,7 +192,7 @@ def handle_yesterday_timesheet(connection):
         headers = [desc[0] for desc in cursor.description]
 
         # Format data into a table
-        table = tabulate(rows, headers=headers, tablefmt="github")
+        table = tabulate(rows, headers=headers, tablefmt="rounded_outline")
 
         # Display time entries for yesterday
         display_time_entries_for_specific_date(connection, yesterday_date)
@@ -228,7 +228,7 @@ def handle_specific_date_timesheet(connection, specified_date):
         headers = [desc[0] for desc in cursor.description]
 
         # Format data into a table
-        table = tabulate(rows, headers=headers, tablefmt="github")
+        table = tabulate(rows, headers=headers, tablefmt="rounded_outline")
 
         # Display time entries for specified date
         display_time_entries_for_specific_date(connection, specified_date)
@@ -272,7 +272,7 @@ def display_time_entries_for_specific_date(connection, date):
         # Print the time entries for the specified date
         if formatted_rows:
             headers = ["timeID", "client", "project", "stage", "task", "start", "end"]
-            table = tabulate(formatted_rows, headers=headers, tablefmt="github")
+            table = tabulate(formatted_rows, headers=headers, tablefmt="rounded_outline")
             print(f"\nAll time entries for {date}:")
             print(table)
         else:
