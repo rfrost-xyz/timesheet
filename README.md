@@ -23,7 +23,7 @@ cd timesheet-management
 2. Install the required libraries using `venv` or similiar.
 
 ```sh
-pip install tabulate simple-term-menu
+pip install -r requirements.txt
 ```
 
 3. Ensure you have an SQLite database and the file is resolved in the connection schema.
