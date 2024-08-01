@@ -32,7 +32,7 @@ pip install -r requirements.txt
 Run the script using the following command:
 
 ```sh
-./main.py
+python ./main.py
 ```
 
 You can also directly view the timesheet for a specific date using the command line argument:
