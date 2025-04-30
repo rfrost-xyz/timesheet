@@ -1,3 +1,2 @@
-simple_term_menu
-tabulate
-argparse
+textual
+python-dateutil
