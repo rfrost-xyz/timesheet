@@ -191,7 +191,7 @@ class FilterableSelect(Container):
                         self._input.cursor_position = len(self._input.value)
                         self._input.focus()
                         self.show_options = False
-                elif event.key == "enter":
+                elif event.key == "enter": # Keep focus on input after enter
                     event.stop()
                     highlighted_index = option_list.highlighted
                     if highlighted_index is not None and 0 <= highlighted_index < len(self.filtered_options):
@@ -202,7 +202,7 @@ class FilterableSelect(Container):
                         self._input.cursor_position = len(self._input.value)
                         self.show_options = False
                         self.post_message(ItemSelected(str(self.id), self.selected_id, self.selected_name))
-                        self.screen.set_focus(None)
+                        self._input.focus() # Keep focus on input
 
             if event.key == "escape":
                  if self.show_options:
@@ -610,9 +610,9 @@ class MainAppScreen(Screen):
             try: self.query_one("#fselect-focus").focus()
             except Exception: pass
         elif message.control_id == "fselect-focus":
-            self.selected_focus_id = message.item_id
-            try: self.query_one("#input-start-time").focus()
-            except Exception: pass
+             self.selected_focus_id = message.item_id
+             #try: self.query_one("#input-start-time").focus() # No auto-focus
+             #except Exception: pass
 
     def on_input_changed(self, event: Input.Changed) -> None:
         if event.input.id == "input-start-time":
@@ -886,4 +886,3 @@ class MainAppScreen(Screen):
         except Exception as e:
              logging.exception("Error saving log entry to database")
              self.app.call_from_thread(self.app.notify, f"An unexpected error occurred: {e}", title="Error", severity="error", timeout=5)
-

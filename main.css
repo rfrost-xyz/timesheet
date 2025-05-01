@@ -17,18 +17,25 @@ Screen {
     height: 10; /* Fixed height for overview */
     border: round $accent;
     margin: 1 1 0 1; /* Margin top/sides, no bottom */
-    padding: 0 1;
-}
-#daily-overview-title {
-    height: 1;
-    width: 100%;
-    text-align: center;
-    text-style: bold;
-    margin-bottom: 1;
+    padding: 1 1 0 1;
 }
 #daily-log-table {
     height: 1fr; /* Fill remaining space in overview container */
     border: none; /* Remove table border if container has one */
+}
+#daily-overview-title {
+    dock: top;
+    align-horizontal: left;
+    color: $accent;
+    text-style: bold;
+    margin-right: 1;
+    margin-left: 1;
+    background: $panel;
+    padding: 0 1;
+    width: auto;
+}
+#daily-overview-title {
+    margin-top: -1; /* Move the title up to overlap the border */
 }
 #daily-log-table:focus .datatable--cursor {
      background: $accent-darken-2;
@@ -37,11 +44,22 @@ Screen {
 
 
 #log-container {
-    padding: 1 2;
+    padding: 1 2 0 2;
     border: round $accent;
-    margin: 1;
     height: auto; /* Let content define height */
     transition: border 500ms; /* Smooth transition for border change */
+}
+#log-form-title {
+    dock: top;
+    align-horizontal: left;    
+    margin-left: 1;
+    color: $accent;
+    text-style: bold;
+    margin-right: 1;
+    background: $panel;
+    padding: 0 1;
+    transition: border 500ms; /* Smooth transition for border change */
+    margin-top: -1;
 }
 
 /* Style for edit mode */
@@ -54,7 +72,6 @@ Screen {
 .title {
     text-style: bold;
     margin-bottom: 1;
-    width: 100%;
     text-align: center;
 }
 
